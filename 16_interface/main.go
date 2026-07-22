@@ -22,7 +22,7 @@ func Introduce(s Speaker) {
 	fmt.Println(s.Speak())
 }
 
-func main17() {
+func main() {
 	myDog := Dog{Name: "Шарик"}
 	
 	// Передаем структуру Dog в функцию, которая ждет Speaker (интерфейс).

@@ -4,7 +4,7 @@ import "fmt"
 
 // Чистая структура данных. Она просто хранит информацию
 type Employee struct {
-	ID int
+	ID   int
 	Name string
 }
 
@@ -47,6 +47,7 @@ func main() {
 
 	// Каждый отдел делает свою работу независимую друг друга
 	salary := finance.CalculatePay(emp)
+	salary = 1
 	hours := hr.ReportHours(emp)
 	db.Save(emp)
 

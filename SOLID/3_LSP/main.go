@@ -35,10 +35,12 @@ type Flyer interface {
 }
 
 type Duck struct{}
+
 func (d Duck) Walk() string { return "Утка идет" }
-func (d Duck) Fly() string { return "Утка летит" }
+func (d Duck) Fly() string  { return "Утка летит" }
 
 type Ostrich struct{}
+
 func (o Ostrich) Walk() string { return "Страус бежит со скоростью 50 км/ч" }
 
 func MakeItFly(f Flyer) {

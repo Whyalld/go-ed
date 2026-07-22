@@ -6,22 +6,25 @@ type DeliveryService interface {
 	Deliver(order Order)
 }
 
-type Order struct{
+type Order struct {
 	TotalCost int
 }
 
 type CourierDelivery struct{}
+
 func (c *CourierDelivery) Deliver(order Order) {
 	fmt.Println("Доставка курьером: Заказ доставлен.")
 }
 
 type PostDelivery struct{}
+
 func (p *PostDelivery) Deliver(order Order) {
 	fmt.Println("Почта России: Посылка отправлена.")
 }
 
 type CdekDelivery struct{}
-func(c *CdekDelivery) Deliver(order Order) {
+
+func (c *CdekDelivery) Deliver(order Order) {
 	fmt.Println("СДЭК: Заказ доставлен в пункт выдачи")
 }
 

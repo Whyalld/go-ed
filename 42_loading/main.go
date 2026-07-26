@@ -46,13 +46,13 @@ func main() {
 	fmt.Print("Введите число секунд: ")
 	fmt.Scan(&duration)
 
-	// start := time.Now()
+	start := time.Now()
 
 	if err := showLoading(duration * time.Second); err != nil {
 		fmt.Println("Ошибка:", err)
 	}
 
-	// fmt.Println("time:", time.Since(start).Seconds())
+	fmt.Println("time:", time.Since(start).Seconds())
 }
 
 func validDimension(value float64) bool {

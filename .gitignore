@@ -9,3 +9,4 @@
 /[0-9]*_*/main
 
 AGENTS.md
+.DS_Store

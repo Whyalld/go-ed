@@ -2,30 +2,57 @@ package main
 
 import (
 	"fmt"
-	"time"
 	"math"
+	"time"
 )
 
-func download(num float64) error{
-	alph := `-\|/`
-	if !validDimension(num) {
-		return fmt.Errorf("Некорректное число: %d", int(num))
+func showLoading(duration time.Duration) error {
+	if !validDimension(float64(duration)) {
+		return fmt.Errorf("Некорректное число: %v", duration)
 	}
-	for i := 1; i <= int(num) * 10; {
-		for _, r := range(alph) {
-			fmt.Printf("\r%c", r)
-			time.Sleep(time.Millisecond * 25)
+
+	symbols := `-\|/`
+	delay := 25 * time.Millisecond
+	stop := time.Now().Add(duration)
+
+	for time.Now().Before(stop) {
+		for _, symb := range symbols {
+			if !time.Now().Before(stop) {
+				break
+			}
+
+			fmt.Printf("\r%c", symb)
+			time.Sleep(delay)
 		}
-		i++
 	}
-	fmt.Print("\r Finish!\n")
+
+	fmt.Print("\rГотово!\n")
 	return nil
+
+	// for i := 1; i <= int(num)*10; {
+	// 	for _, r := range symbols {
+	// 		fmt.Printf("\r%c", r)
+	// 		time.Sleep(delay)
+	// 	}
+	// 	i++
+	// }
+	// fmt.Print("\rFinish!\n")
+	// return nil
+
 }
 
 func main() {
-	start := time.Now()
-	download(5)
-	fmt.Println(time.Since(start).Seconds())
+	var duration time.Duration
+	fmt.Print("Введите число секунд: ")
+	fmt.Scan(&duration)
+
+	// start := time.Now()
+
+	if err := showLoading(duration * time.Second); err != nil {
+		fmt.Println("Ошибка:", err)
+	}
+
+	// fmt.Println("time:", time.Since(start).Seconds())
 }
 
 func validDimension(value float64) bool {

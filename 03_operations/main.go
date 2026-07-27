@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func operations() {
+func main() {
 	var pi float32 = 3.14
 	circleRadius := 2 // радиус круга в сантиметрах
 	// площадь круга

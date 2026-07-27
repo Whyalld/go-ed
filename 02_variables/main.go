@@ -8,7 +8,7 @@ var King string = "me"
 // Константы (могут быть как локальными, та и глобальными)
 const pi float32 = 3.1415
 
-func variables() {
+func main() {
 	// Локальные переменные
 	var name string = "Said"
 	var count int = 10

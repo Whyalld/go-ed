@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main6() {
+func main() {
 	toDoList := [...]string{
 		"Купить бальзам",
 		"Купить банан",

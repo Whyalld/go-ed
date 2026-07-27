@@ -3,7 +3,7 @@ package main
 import "fmt"
 import "os"
 
-func f() {
+func main() {
 	// Sprint
 	var verb string = "hello"
 	fmt.Printf("%v my friend\n", verb)
@@ -14,7 +14,7 @@ func f() {
 	print(data, "\n", data2, "\n")
 
 	// Fprint
-	file, _ := os.Create("log.txt")
+	file, _ := os.Create("06_fmt/log.txt")
 	defer file.Close()
 
 	fmt.Fprint(file, "baby")

@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main5() {
+func main() {
 	// Slice (срез) - тот же массив, но его длина динамическая
 	var slice = []string{
 		"Наушники",

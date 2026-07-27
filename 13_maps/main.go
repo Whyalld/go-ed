@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func mai() {
+func main() {
 	var ages map[string]int
 	fmt.Println(ages, ages == nil)
 	// ages["Maxim"] = 20 -> ошибка будет

@@ -6,24 +6,29 @@ import (
 )
 
 func main() {
-	t := time.Now()
+	t := time.Now() // время старта
 
 	fmt.Printf("Старт: %s\n", t.Format(time.RFC3339))
 
-	result1 := make(chan int)
-	result2 := make(chan int)
+	go func() {
+		for {
+			for _, r := range `-\|/` {
+				fmt.Printf("\r%c", r)
+				time.Sleep(time.Millisecond * 100)
+			}
+		}
+	}()
 
-	go calculateSomething(1000, result1)
+	go calculateSomething(1000)
 
-	go calculateSomething(2000, result2)
+	go calculateSomething(2000)
 
-	fmt.Println(<-result1)
-	fmt.Println(<-result2)
+	time.Sleep(8 * time.Second)
 
 	fmt.Printf("Время выполнения программы: %s\n", time.Since(t))
 }
 
-func calculateSomething(n int, res chan int) {
+func calculateSomething(n int) {	
 	t := time.Now()
 
 	result := 0
@@ -33,5 +38,4 @@ func calculateSomething(n int, res chan int) {
 	}
 
 	fmt.Printf("Рузультат: %d; Прошло времени: %s\n", result, time.Since(t))
-	res <- result
 }

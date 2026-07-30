@@ -1,27 +1,18 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func main() {
-	ch1 := make(chan int)
+	timerChan := make(chan time.Time)
+
 	go func() {
-		ch1 <- 10
+		time.Sleep(2 * time.Second)
+		timerChan <- time.Now()
 	}()
 
-	ch2 := make(chan string)
-	go func() {
-		ch2 <- "hello"
-	}()
-
-	num := <- ch1
-	fmt.Println(num)
-
-	select {
-	case v := <- ch1:
-		fmt.Println("channel 1 sends", v)
-	case v := <- ch2:
-		fmt.Println("channel 2 sends", v)
-	default:
-		fmt.Println("neither channel was ready")
-	}
+	completeAt := <-timerChan
+	fmt.Println(completeAt)
 }

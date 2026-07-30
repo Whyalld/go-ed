@@ -6,16 +6,12 @@ import (
 )
 
 func main() {
-	symbols := `-\|/`
-	
-	for i := 0; i <= 10; i++ {
-		for _, r := range(symbols) {
-			fmt.Printf("\r%c", r)
-			time.Sleep(time.Millisecond * 100)
-		}
+	var char rune = '💁'
+	fmt.Printf("%c\n", char)
 
+	for i := 1; i <= 10; i++ {
+		fmt.Printf("\r%d", i)
+		time.Sleep(time.Millisecond * 100)
 	}
-	fmt.Print("\r")
-	fmt.Println("Boo!")
-	fmt.Scan()
+	fmt.Println()
 }

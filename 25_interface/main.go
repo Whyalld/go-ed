@@ -47,64 +47,14 @@ func (s *memoryStorage) delete(id int) error {
 	return nil
 }
 
-type dumbStorage struct{}
-
-func newDumbStorage() *dumbStorage {
-	return &dumbStorage{}
-}
-
-func (s *dumbStorage) insert(e employee) error {
-	fmt.Printf("вставка пользователя с id: %d прошла успешно\n", e.id)
-	return nil
-}
-
-func (s *dumbStorage) get(id int) (employee, error) {
-	e := employee{
-		id: id,
-	}
-
-	return e, nil
-}
-
-func (s *dumbStorage) delete(id int) error {
-	fmt.Printf("удаление пользователя с id: %d прошло успешно\n", id)
-	return nil
-}
-
-// func main() {
-// 	var s storage
-
-// 	fmt.Println("s:", s)
-// 	fmt.Printf("type of s: %T\n\n", s)
-
-// 	s = newMemoryStorage()
-
-// 	fmt.Println("s:", s)
-// 	fmt.Printf("type of s: %T\n\n", s)
-
-// 	s = newDumbStorage()
-
-// 	fmt.Println("s:", s)
-// 	fmt.Printf("type of s: %T\n\n", s)
-
-// 	s = nil
-
-// 	fmt.Println("s:", s)
-// 	fmt.Printf("type of s: %T\n\n", s)
-// }
-
 func main() {
-	ms := newMemoryStorage()
-	ds := newDumbStorage()
+	var s storage
 
-	spawnEmployees(ms)
-	fmt.Println(ms.get(3))
+	fmt.Println("s == nil", s == nil)
+	fmt.Printf("type of s: %T\n\n", s)
 
-	spawnEmployees(ds)
-}
-
-func spawnEmployees(s storage) {
-	for i := 1; i <= 10; i++ {
-		s.insert(employee{id: i})
-	}
+	s = newMemoryStorage()
+	
+	fmt.Println("s == nil", s == nil)
+	fmt.Printf("type of s: %T\n", s)
 }

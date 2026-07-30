@@ -2,22 +2,33 @@ package main
 
 import (
 	"fmt"
-	"time"
+	// "time"
 )
 
 func main() {
-	number := make(chan int)
+	numbers := make(chan int)
 
-	go func() {
-		number <- 42
-	}()
+	go generateNumbers(1000, numbers)
 
-	time.Sleep(time.Millisecond * 100)
+	// for number := range numbers {
+	// 	fmt.Println(number)
+	// }
 
-	select {
-	case n := <-number:
-		fmt.Println(n)
-	default:
-		fmt.Println("ничего, пусто, completle nothing")
+	for {
+		number, ok := <-numbers
+
+		fmt.Println(number, ok)
+
+		if !ok {
+			break
+		}
+	}
+}
+
+func generateNumbers(n int, res chan int) {
+	defer close(res)
+
+	for i := 0; i <= n; i++ {
+		res <- i * 2
 	}
 }

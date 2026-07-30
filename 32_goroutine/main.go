@@ -6,13 +6,16 @@ import (
 )
 
 func main() {
-	timerChan := make(chan time.Time)
+	resultChan := make(chan int)
 
 	go func() {
 		time.Sleep(2 * time.Second)
-		timerChan <- time.Now()
+		result := 10 + 20
+		resultChan <- result
 	}()
 
-	completeAt := <-timerChan
-	fmt.Println(completeAt)
+	fmt.Println("Выполняем другую работу")
+
+	result := <-resultChan
+	fmt.Println(result) // 30
 }

@@ -2,17 +2,19 @@ package main
 
 import "fmt"
 
-func main13_2() {
-	age := 30 // Обычная переменная
+func main8() {
+	x := 10
+	p := &x
+	j := new(x)
 
-	// &age берет адрес ячейки памяти (например, 0xc0000140a8)
-	pointerToAge := &age
+	*p += 5
+	increment(j)
 
-	fmt.Println(pointerToAge) // Выведет адрес в памяти: 0xc0000140a8
-	fmt.Println(*pointerToAge) // Выведет значение по этому адресу: 25
+	fmt.Println(*j)
+	fmt.Println(x)
+	fmt.Println(*p)
+}
 
-	// Меняем значение через указатель
-	*pointerToAge = 18
-
-	fmt.Println(age) // Выведет 30! Оригинальная переменная изменилась
+func increment(value *int) {
+	*value += 1
 }

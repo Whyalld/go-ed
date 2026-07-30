@@ -5,145 +5,33 @@ import (
 	"time"
 )
 
-// func main() {
-// 	nums := make(chan int)
-// 	squares := make(chan int)
-
-// 	go func() {
-// 		defer close(nums)
-
-// 		for i := 1; i <= 10; i++ {
-// 			nums <- i
-// 			time.Sleep(300 * time.Millisecond)
-// 		}
-// 	}()
-
-// 	go func() {
-// 		defer close(squares)
-
-// 		for n := range(nums) {
-// 			squares <- n * n
-// 		}
-// 	}()
-
-// 	for n := range squares {
-// 		fmt.Println(n)
-// 	}
-// }
-
-// type Result struct {
-// 	Number int
-// 	Square int
-// }
-
-// func generateNumbers(numbers chan<- int) {
-// 	defer close(numbers)
-
-// 	for i := 1; i <= 10; i++ {
-// 		numbers <- i
-// 		time.Sleep(300 * time.Millisecond)
-// 	}
-// }
-
-// func calculateSquares(numbers <-chan int, results chan<- Result) {
-// 	defer close(results)
-
-// 	for num := range numbers {
-// 		res := Result{Number: num, Square: num * num}
-// 		results <- res
-// 	}
-// }
-
-// func main() {
-// 	numbers := make(chan int)
-// 	results := make(chan Result)
-
-// 	go generateNumbers(numbers)
-// 	go calculateSquares(numbers, results)
-
-// 	for n := range results {
-// 		fmt.Printf("Квадрат числа %d = %d\n", n.Number, n.Square)
-// 	}
-// }
-
-const workerCount = 3
-
-type Result struct {
-	WokerID int
-	Number  int
-	Square  int
-}
-
-func generateNumbers(userInput int, numbers chan<- int) {
-	defer close(numbers)
-
-	for i := 1; i <= userInput; i++ {
-		numbers <- i
-	}
-}
-
-func calculateSquares(
-	wokerID int,
-	numbers <-chan int,
-	results chan<- Result,
-	done chan<- struct{},
-) {
-	// Перед выходом сообщаем, что работник завершился
-	defer func() {
-		done <- struct{}{}
-	}()
-
-	for number := range numbers {
-		// Имитируем продолжительные вычисления
-		time.Sleep(300 * time.Millisecond)
-
-		results <- Result{
-			WokerID: wokerID,
-			Number:  number,
-			Square:  number * number,
-		}
-	}
-}
-
 func main() {
-	var userInput int
+	t := time.Now()
 
-	fmt.Print("Введите число: ")
+	fmt.Printf("Старт: %s\n", t.Format(time.RFC3339))
 
-	_, err := fmt.Scan(&userInput)
-	if err != nil {
-		fmt.Println("Ошибка: необходимо ввести целое число")
-		return
+	result1 := make(chan int)
+	result2 := make(chan int)
+
+	go calculateSomething(1000, result1)
+
+	go calculateSomething(2000, result2)
+
+	fmt.Println(<-result1)
+	fmt.Println(<-result2)
+
+	fmt.Printf("Время выполнения программы: %s\n", time.Since(t))
+}
+
+func calculateSomething(n int, res chan int) {
+	t := time.Now()
+
+	result := 0
+	for i := 0; i <= n; i++ {
+		result += i * 2
+		time.Sleep(time.Microsecond * 3)
 	}
 
-	if userInput <= 0 {
-		fmt.Println("Ошибка: число должно быть больше нуля")
-		return
-	}
-
-	numbers := make(chan int)
-	results := make(chan Result)
-	done := make(chan struct{})
-
-	go generateNumbers(userInput, numbers)
-
-	for workerID := 1; workerID <= workerCount; workerID++ {
-		go calculateSquares(workerID, numbers, results, done)
-	}
-
-	// Эта горутина ждет завершения всех работников
-	go func() {
-		for i := 0; i < workerCount; i++ {
-			<-done
-		}
-
-		close(results)
-	}()
-
-	// main получает и печатает готовые результаты
-	for result := range results {
-		fmt.Printf(
-			"Работник %d: квадрат числа %d = %d\n",
-			result.WokerID, result.Number, result.Square)
-	}
+	fmt.Printf("Рузультат: %d; Прошло времени: %s\n", result, time.Since(t))
+	res <- result
 }

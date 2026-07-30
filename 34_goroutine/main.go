@@ -1,19 +1,27 @@
 package main
 
-import (
-	"fmt"
-	"math"
-)
-
-func Compose(
-	f, g func(float64) float64,
-	) func(float64) float64 {
-	return func(x float64) float64 {
-		return f(g(x))
-	}
-}
+import "fmt"
 
 func main() {
-	result := Compose(math.Sin, math.Cos)(0.5)
-	fmt.Println(result)
+	ch1 := make(chan int)
+	go func() {
+		ch1 <- 10
+	}()
+
+	ch2 := make(chan string)
+	go func() {
+		ch2 <- "hello"
+	}()
+
+	num := <- ch1
+	fmt.Println(num)
+
+	select {
+	case v := <- ch1:
+		fmt.Println("channel 1 sends", v)
+	case v := <- ch2:
+		fmt.Println("channel 2 sends", v)
+	default:
+		fmt.Println("neither channel was ready")
+	}
 }

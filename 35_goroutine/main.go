@@ -1,26 +1,19 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
+
+func Compose(
+	f, g func(float64) float64,
+	) func(float64) float64 {
+	return func(x float64) float64 {
+		return f(g(x))
+	}
+}
 
 func main() {
-	input := make(chan int)
-	output := make(chan int)
-
-	go func() {
-		defer close(output)
-		for val := range input {
-			output <- val
-		}
-	}()
-
-	go func() {
-		input <- 10
-		input <- 20
-		input <- 30
-		close(input)
-	}()
-
-	fmt.Println(<-output)
-	fmt.Println(<-output)
-	fmt.Println(<-output)
+	result := Compose(math.Sin, math.Cos)(0.5)
+	fmt.Println(result)
 }

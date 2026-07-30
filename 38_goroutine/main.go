@@ -6,29 +6,27 @@ import (
 )
 
 func main() {
-	t := time.Now() // время старта
+	start := time.Now() // время старта
+	done := make(chan struct{})
 
-	fmt.Printf("Старт: %s\n", t.Format(time.RFC3339))
+	fmt.Printf("Старт: %s\n", start.Format(time.RFC3339))
 
-	go func() {
-		for {
-			for _, r := range `-\|/` {
-				fmt.Printf("\r%c", r)
-				time.Sleep(time.Millisecond * 100)
-			}
-		}
-	}()
+	go CalculateSomething(1000, done)
 
-	go calculateSomething(1000)
+	go CalculateSomething(2000, done)
 
-	go calculateSomething(2000)
+	<-done
+	<-done
 
-	time.Sleep(8 * time.Second)
-
-	fmt.Printf("Время выполнения программы: %s\n", time.Since(t))
+	fmt.Printf("Время выполнения программы: %s\n", time.Since(start))
 }
 
-func calculateSomething(n int) {	
+
+func CalculateSomething(n int, done chan <- struct{}) {
+	defer func() {
+		done <- struct{}{}
+	}()
+	
 	t := time.Now()
 
 	result := 0
@@ -39,3 +37,4 @@ func calculateSomething(n int) {
 
 	fmt.Printf("Рузультат: %d; Прошло времени: %s\n", result, time.Since(t))
 }
+

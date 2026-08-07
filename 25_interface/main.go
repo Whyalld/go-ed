@@ -54,7 +54,7 @@ func main() {
 	fmt.Printf("type of s: %T\n\n", s)
 
 	s = newMemoryStorage()
-	
+
 	fmt.Println("s == nil", s == nil)
 	fmt.Printf("type of s: %T\n", s)
 }

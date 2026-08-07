@@ -24,7 +24,7 @@ func Introduce(s Speaker) {
 
 func main() {
 	myDog := Dog{Name: "Шарик"}
-	
+
 	// Передаем структуру Dog в функцию, которая ждет Speaker (интерфейс).
 	// Это работает, потому что Dog автоматически имплементировал интерфейс
 	Introduce(myDog)

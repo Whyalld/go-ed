@@ -7,7 +7,7 @@ import (
 
 func Compose(
 	f, g func(float64) float64,
-	) func(float64) float64 {
+) func(float64) float64 {
 	return func(x float64) float64 {
 		return f(g(x))
 	}

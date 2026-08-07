@@ -20,7 +20,7 @@ func (a *animal) eat() {
 // Дочерняя структура
 type dog struct {
 	animal // Встраивание: мы просто пишем имя типа без названия поля!
-	breed string
+	breed  string
 }
 
 func (d *dog) bark() {
@@ -31,11 +31,11 @@ func main19() {
 	// Создаем объект dog
 	myDog := dog{
 		animal: animal{name: "Джон"}, // Заполняем встроенную структуру
-		breed: "овчарка",
+		breed:  "овчарка",
 	}
 
 	// Происходит "проброс" (delegation) методов и полей
 	fmt.Println(myDog.breed, myDog.name) // Поле name доступно напрямую у myDog
-	myDog.eat() // Метод eat доступен напрямую у myDog
-	myDog.bark() // Собственный метод dog
+	myDog.eat()                          // Метод eat доступен напрямую у myDog
+	myDog.bark()                         // Собственный метод dog
 }

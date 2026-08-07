@@ -13,7 +13,7 @@ import (
 
 func factorial(n int) int {
 	time.Sleep(1000 * time.Millisecond)
-	
+
 	if n == 0 {
 		return 1
 	}

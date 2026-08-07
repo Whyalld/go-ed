@@ -1,9 +1,9 @@
 package main
 
 import (
+	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
-	"github.com/gin-gonic/gin"
 )
 
 func main() {
@@ -24,4 +24,3 @@ func main() {
 		log.Fatalf("failed to run server: %v", err)
 	}
 }
-

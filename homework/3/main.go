@@ -14,7 +14,7 @@ func CalculateArea(f Figure) float64 {
 	return f.Area()
 }
 
-func CalculatePerimеter(f Figure) float64{
+func CalculatePerimеter(f Figure) float64 {
 	return f.Perimeter()
 }
 
@@ -28,7 +28,7 @@ func NewCircle(radius float64) (*Circle, error) {
 	}
 
 	return &Circle{radius: radius}, nil
-} 
+}
 
 func (c *Circle) Area() float64 {
 	return math.Pi * c.radius * c.radius
@@ -40,14 +40,14 @@ func (c *Circle) Perimeter() float64 {
 
 type Rectangle struct {
 	length float64
-	width float64
+	width  float64
 }
 
 func NewRectangle(length float64, width float64) (*Rectangle, error) {
 	if !validDimension(length) {
 		return nil, fmt.Errorf("некорректная длина %v: ожидается конечное неотрицательное число", length)
 	}
-	
+
 	if !validDimension(width) {
 		return nil, fmt.Errorf("некорректная ширина %v: ожидается конечное неотрицальеное число", width)
 	}

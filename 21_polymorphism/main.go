@@ -41,12 +41,12 @@ func sendAlert(n notifier, text string) {
 func main20() {
 	sms := &smsNotifier{
 		baseNotifier: baseNotifier{senderName: "Система безопасности"},
-		phoneNumber: "+7-932-838-83-91",
+		phoneNumber:  "+7-932-838-83-91",
 	}
-	
+
 	email := &emailNotifier{
 		baseNotifier: baseNotifier{senderName: "Маркетинг"},
-		emailAdress: "user@example.com",
+		emailAdress:  "user@example.com",
 	}
 
 	fmt.Println("--- Запуск уведомлений ---")

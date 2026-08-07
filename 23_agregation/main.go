@@ -8,7 +8,7 @@ type Driver struct {
 
 type SafeCar struct {
 	Driver *Driver // Агрегация: Ссылка на водителя. Водитель существует отдельно
-	Model string
+	Model  string
 }
 
 func main() {
@@ -17,10 +17,8 @@ func main() {
 
 	taxi := SafeCar{
 		Driver: man,
-		Model: "Toyota",
+		Model:  "Toyota",
 	}
 
 	fmt.Println(taxi.Driver.Name)
 }
-
-

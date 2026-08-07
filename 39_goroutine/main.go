@@ -28,7 +28,7 @@ func main() {
 	fmt.Printf("Время выполнения программы: %s\n", time.Since(t))
 }
 
-func calculateSomething(n int) {	
+func calculateSomething(n int) {
 	t := time.Now()
 
 	result := 0

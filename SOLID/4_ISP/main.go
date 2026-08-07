@@ -18,11 +18,13 @@ type Runner interface {
 }
 
 type Duck struct{}
+
 func (d *Duck) Fly() string {
 	return "Утка летит в небе!"
 }
 
 type Ostrich struct{}
+
 func (o *Ostrich) Run() string {
 	return "Страус бежит со скоростью 50 км/ч!"
 }

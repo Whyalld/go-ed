@@ -8,7 +8,7 @@ import (
 func main() {
 	fmt.Print("Введите число: ")
 
-	var num int 
+	var num int
 	_, err := fmt.Scan(&num)
 
 	if err != nil {
@@ -16,8 +16,11 @@ func main() {
 	}
 
 	switch {
-	case num < 10: fmt.Printf("Number %v is less than 10\n", num)
-	case num > 10: fmt.Printf("Number %v is greater than 10\n", num)
-	default: fmt.Println("Number is equal to 10")
+	case num < 10:
+		fmt.Printf("Number %v is less than 10\n", num)
+	case num > 10:
+		fmt.Printf("Number %v is greater than 10\n", num)
+	default:
+		fmt.Println("Number is equal to 10")
 	}
 }

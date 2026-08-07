@@ -8,13 +8,13 @@ import (
 func main() {
 	var (
 		counter int
-		wg sync.WaitGroup
-		mutex sync.Mutex
+		wg      sync.WaitGroup
+		mutex   sync.Mutex
 	)
 
 	for i := 0; i < 1000; i++ {
 		wg.Add(1)
-		
+
 		go func() {
 			defer wg.Done()
 			increment(&counter, &mutex)

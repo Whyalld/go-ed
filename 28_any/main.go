@@ -17,7 +17,7 @@ func main() {
 	// fmt.Println(value + 5) // Ошибка - value имеет тип any (interface{})
 
 	number, ok := value.(int)
-	
+
 	if ok {
 		fmt.Println(number + 5) // 10
 	}
@@ -57,5 +57,6 @@ func describe(value any) {
 		fmt.Println("неизвестный тип: ", v)
 	}
 }
+
 // Конструкция .(type) используется только внутри type switch. Отдельно написать так нельзя:
 // v := value.(type) // ошбика

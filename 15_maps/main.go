@@ -10,11 +10,11 @@ func main() {
 	// Сначала нужно make сделать, потом вносить значения
 	ages = make(map[string]int)
 	fmt.Println(ages, ages == nil)
-	
+
 	ages["Maxim"] = 20
 	ages["Deni"] = 31
 	ages["Isa"] = 26
-	
+
 	for key, value := range ages {
 		fmt.Printf("%s - %d\n", key, value)
 	}
@@ -22,9 +22,9 @@ func main() {
 	fmt.Println("Возраст Максима:", ages["Maxim"])
 
 	// Можно инициализировать мапу сразу со значениями
-	var data = map[string]int {
+	var data = map[string]int{
 		"Саид": 100,
-		"Дени": 20, 
+		"Дени": 20,
 	}
 	fmt.Printf("У Саида %d баллов, а у Дуни %d\n", data["Саид"], data["Пися"])
 
@@ -39,7 +39,6 @@ func main() {
 	// delete
 	delete(data, "Дени")
 	fmt.Println(data)
-
 
 	// Связанность
 	agesCopy := make(map[string]int)

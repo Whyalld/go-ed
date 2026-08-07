@@ -21,12 +21,11 @@ func main() {
 	fmt.Printf("Время выполнения программы: %s\n", time.Since(start))
 }
 
-
-func CalculateSomething(n int, done chan <- struct{}) {
+func CalculateSomething(n int, done chan<- struct{}) {
 	defer func() {
 		done <- struct{}{}
 	}()
-	
+
 	t := time.Now()
 
 	result := 0
@@ -37,4 +36,3 @@ func CalculateSomething(n int, done chan <- struct{}) {
 
 	fmt.Printf("Рузультат: %d; Прошло времени: %s\n", result, time.Since(t))
 }
-

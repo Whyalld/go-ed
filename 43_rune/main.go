@@ -7,9 +7,9 @@ import (
 
 func main() {
 	symbols := `-\|/`
-	
+
 	for i := 0; i <= 10; i++ {
-		for _, r := range(symbols) {
+		for _, r := range symbols {
 			fmt.Printf("\r%c", r)
 			time.Sleep(time.Millisecond * 100)
 		}

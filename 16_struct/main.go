@@ -3,9 +3,9 @@ package main
 import "fmt"
 
 type employee struct {
-	name string
+	name   string
 	gender string
-	age int
+	age    int
 	salary int
 }
 
@@ -21,9 +21,9 @@ func main12() {
 
 func newEmployee(name string, gender string, age int, salary int) employee {
 	return employee{
-		name: name,
+		name:   name,
 		gender: gender,
-		age: age,
+		age:    age,
 		salary: salary,
 	}
 }

@@ -5,7 +5,7 @@ import "fmt"
 func main() {
 	printType(3)
 	printType("интерфейсы это легко")
-	printType([]string{"привет"})	
+	printType([]string{"привет"})
 
 	var value any = 3
 	number, ok := value.(int)

@@ -1,5 +1,5 @@
 package main
-
+// LSP - Liskov Substiotution principle
 import "fmt"
 
 /* Код нарушающий LSP

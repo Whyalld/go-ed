@@ -1,5 +1,5 @@
 package main
-
+// SRP - Single Responcibility principle
 import "fmt"
 
 // Чистая структура данных. Она просто хранит информацию

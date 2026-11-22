@@ -1,5 +1,5 @@
 package main
-
+// DIP - Dependency Inversion principle
 import "fmt"
 
 // Абстракция: контракт, который нужен верхнему уровню

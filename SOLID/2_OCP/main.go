@@ -1,5 +1,5 @@
 package main
-
+// OCP - Open-Closed principle
 import "fmt"
 
 type DeliveryService interface {

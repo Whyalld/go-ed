@@ -6,7 +6,7 @@
 там содержат всего по одному методу (например, io.Reader, io.Writer, fmt.Stringer). */
 
 package main
-
+// ISP - Interface Segregation principle
 import "fmt"
 
 type Flyer interface {

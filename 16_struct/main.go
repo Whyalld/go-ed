@@ -9,16 +9,6 @@ type employee struct {
 	salary int
 }
 
-func main12() {
-	employee1 := newEmployee("Piter", "male", 48, 3500)
-	employee2 := newEmployee("Bob", "male", 19, 1500)
-
-	employee1.changeName("Petya")
-
-	fmt.Printf("%s\n", employee1.getInfo())
-	fmt.Printf("%s", employee2.getInfo())
-}
-
 func newEmployee(name string, gender string, age int, salary int) employee {
 	return employee{
 		name:   name,
@@ -34,4 +24,14 @@ func (e employee) getInfo() string {
 
 func (e *employee) changeName(name string) {
 	e.name = name
+}
+
+func main() {
+	employee1 := newEmployee("Piter", "male", 48, 3500)
+	employee2 := newEmployee("Bob", "male", 19, 1500)
+
+	employee1.changeName("Petya")
+
+	fmt.Printf("%s\n", employee1.getInfo())
+	fmt.Printf("%s", employee2.getInfo())
 }

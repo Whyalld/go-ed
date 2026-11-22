@@ -12,7 +12,7 @@ func showLoading(duration time.Duration) error {
 	}
 
 	symbols := `-\|/`
-	delay := 25 * time.Millisecond
+	delay := 100 * time.Millisecond
 	stop := time.Now().Add(duration)
 
 	for time.Now().Before(stop) {
@@ -28,17 +28,6 @@ func showLoading(duration time.Duration) error {
 
 	fmt.Print("\rГотово!\n")
 	return nil
-
-	// for i := 1; i <= int(num)*10; {
-	// 	for _, r := range symbols {
-	// 		fmt.Printf("\r%c", r)
-	// 		time.Sleep(delay)
-	// 	}
-	// 	i++
-	// }
-	// fmt.Print("\rFinish!\n")
-	// return nil
-
 }
 
 func main() {
